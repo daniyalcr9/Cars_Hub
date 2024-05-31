@@ -110,6 +110,13 @@ class _SignUpState extends State<SignUp> {
                       ),
                       SizedBox(height: 20.0),
                       TextFormField(
+                        controller: pass,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please Enter your Name";
+                          }
+                          return null;
+                        },
                         decoration: InputDecoration(
                           labelText: 'Password',
                           prefixIcon: Icon(Icons.lock),
