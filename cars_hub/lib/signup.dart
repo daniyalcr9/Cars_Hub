@@ -90,6 +90,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                       SizedBox(height: 20.0),
                       TextFormField(
+                        controller: email,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Please Enter your Name";
@@ -113,7 +114,9 @@ class _SignUpState extends State<SignUp> {
                         controller: pass,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Please Enter your Name";
+                            return "Please Enter a Password";
+                          } else if (!regpassword.hasMatch(value)) {
+                            return "Enter a Valid Password";
                           }
                           return null;
                         },
@@ -130,6 +133,15 @@ class _SignUpState extends State<SignUp> {
                       ),
                       SizedBox(height: 20.0),
                       TextFormField(
+                        controller: confirmpass,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please Enter a Password";
+                          } else if (value != pass.text) {
+                            return 'Passwords do not match';
+                          }
+                          return null;
+                        },
                         decoration: InputDecoration(
                           labelText: 'Confirm Password',
                           prefixIcon: Icon(Icons.lock),
@@ -145,10 +157,10 @@ class _SignUpState extends State<SignUp> {
                       ElevatedButton(
                         onPressed: () {
                           if (form.currentState!.validate()) {
-                            print("name: $name");
-                            print("email: $email");
-                            print("password: $pass");
-                            print("confirm password $confirmpass");
+                            print("name: " + name.text);
+                            print("email: " + email.text);
+                            print("password: " + pass.text);
+                            print("confirm password : " + confirmpass.text);
                           }
                         },
                         child: Text(

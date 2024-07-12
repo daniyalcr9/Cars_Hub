@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         useMaterial3: true,
       ),
-      home: SignUp(),
+      home: AdPosting(),
     );
   }
 }
