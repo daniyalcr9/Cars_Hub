@@ -102,6 +102,7 @@ class _CarInfoState extends State<CarInfo> {
           height: 10,
         ),
         TextFormField(
+          keyboardType: TextInputType.number,
           controller: registered_in,
           validator: (value) {
             if (value!.isEmpty) {
@@ -143,6 +144,7 @@ class _CarInfoState extends State<CarInfo> {
         ),
         TextFormField(
           controller: mileage,
+          keyboardType: TextInputType.number,
           validator: (value) {
             if (value!.isEmpty) {
               return "Please Enter your Car Mileage";
@@ -150,7 +152,7 @@ class _CarInfoState extends State<CarInfo> {
             return null;
           },
           decoration: InputDecoration(
-            labelText: 'Mileage', filled: true, // Enable filling
+            labelText: 'Mileage in KM', filled: true, // Enable filling
             fillColor: Colors.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0), // Make it circular
@@ -163,6 +165,7 @@ class _CarInfoState extends State<CarInfo> {
         ),
         TextFormField(
           controller: price,
+          keyboardType: TextInputType.number,
           validator: (value) {
             if (value!.isEmpty) {
               return "Please Enter your Car Price you want to sell";
