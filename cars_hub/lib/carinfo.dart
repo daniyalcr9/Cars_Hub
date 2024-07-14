@@ -62,6 +62,7 @@ class _CarInfoState extends State<CarInfo> {
           height: 10,
         ),
         TextFormField(
+          keyboardType: TextInputType.number,
           controller: model,
           validator: (value) {
             if (value!.isEmpty) {
