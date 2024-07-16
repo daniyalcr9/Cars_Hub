@@ -11,28 +11,28 @@ class _infohubState extends State<infohub> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text(
-            'Cars Hub',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 28,
-              color: Color.fromARGB(255, 32, 122, 182),
-            ),
-          ),
-        ),
-        leading: Icon(Icons.menu),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: Icon(Icons.person),
-          )
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: Center(
+      //     child: Text(
+      //       'Cars Hub',
+      //       style: TextStyle(
+      //         fontWeight: FontWeight.bold,
+      //         fontSize: 28,
+      //         color: Color.fromARGB(255, 32, 122, 182),
+      //       ),
+      //     ),
+      //   ),
+      //   leading: Icon(Icons.menu),
+      //   actions: [
+      //     Padding(
+      //       padding: const EdgeInsets.only(right: 8),
+      //       child: Icon(Icons.person),
+      //     )
+      //   ],
+      // ),
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height,
+          // height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -47,7 +47,7 @@ class _infohubState extends State<infohub> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -59,10 +59,21 @@ class _infohubState extends State<infohub> {
                   ),
                   child: Center(
                     child: TextField(
+                      style: TextStyle(fontSize: 14), // Adjust text size
                       decoration: InputDecoration(
-                        hintText: 'Search...',
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
-                        border: InputBorder.none,
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 15,
+                        ), // Adjust padding
+                        hintText: "Search any Car of your choice!",
+                        prefixIcon: Icon(Icons.search),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            20.0,
+                          ), // Making search bar circular
+                        ),
                       ),
                     ),
                   ),
@@ -174,22 +185,22 @@ class _infohubState extends State<infohub> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Info Hub',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Other Services',
-          ),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home),
+      //       label: 'Home',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.info),
+      //       label: 'Info Hub',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.settings),
+      //       label: 'Other Services',
+      //     ),
+      //   ],
+      // ),
     );
   }
 

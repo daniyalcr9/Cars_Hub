@@ -30,25 +30,28 @@ class _MyWidgetState extends State<MyWidget> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 8),
+            padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                TextField(
-                  style: TextStyle(fontSize: 14), // Adjust text size
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 15,
-                    ), // Adjust padding
-                    hintText: 'Search any Car of your choice!',
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        20.0,
-                      ), // Making search bar circular
+                Container(
+                  height: 40,
+                  child: TextField(
+                    style: TextStyle(fontSize: 14), // Adjust text size
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 15,
+                      ), // Adjust padding
+                      hintText: 'Search any Car of your choice!',
+                      prefixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          20.0,
+                        ), // Making search bar circular
+                      ),
                     ),
                   ),
                 ),

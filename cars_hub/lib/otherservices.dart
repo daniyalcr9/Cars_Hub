@@ -37,25 +37,25 @@ class _otherservicesState extends State<otherservices> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text(
-            'Cars Hub',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 28,
-              color: Color.fromARGB(255, 32, 122, 182),
-            ),
-          ),
-        ),
-        leading: Icon(Icons.menu),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: Icon(Icons.person),
-          )
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: Center(
+      //     child: Text(
+      //       'Cars Hub',
+      //       style: TextStyle(
+      //         fontWeight: FontWeight.bold,
+      //         fontSize: 28,
+      //         color: Color.fromARGB(255, 32, 122, 182),
+      //       ),
+      //     ),
+      //   ),
+      //   leading: Icon(Icons.menu),
+      //   actions: [
+      //     Padding(
+      //       padding: const EdgeInsets.only(right: 8),
+      //       child: Icon(Icons.person),
+      //     )
+      //   ],
+      // ),
       body: SingleChildScrollView(
         child: Form(
           key: form,
@@ -75,7 +75,7 @@ class _otherservicesState extends State<otherservices> {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.fromLTRB(16, 64, 16, 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -295,32 +295,32 @@ class _otherservicesState extends State<otherservices> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add functionality for the floating button
-        },
-        child: Icon(Icons.add),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0), // Make it circular
-        ),
-        // backgroundColor: Theme.of(context).accentColor, // Using accent color for the floating action button
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'Info Hub',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Other Services',
-          ),
-        ],
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     // Add functionality for the floating button
+      //   },
+      //   child: Icon(Icons.add),
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.circular(30.0), // Make it circular
+      //   ),
+      //   // backgroundColor: Theme.of(context).accentColor, // Using accent color for the floating action button
+      // ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home),
+      //       label: 'Home',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.info),
+      //       label: 'Info Hub',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.settings),
+      //       label: 'Other Services',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

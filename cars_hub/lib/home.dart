@@ -51,11 +51,12 @@ class _HomeState extends State<Home> {
           // backgroundColor: Theme.of(context).accentColor, // Using accent color for the floating action button
         ),
         bottomNavigationBar: Container(
+          color: Colors.white,
           child: TabBar(
             tabs: [
               Tab(icon: Icon(Icons.home), text: "Home"),
-              Tab(icon: Icon(Icons.home), text: "Home"),
-              Tab(icon: Icon(Icons.home), text: "Home"),
+              Tab(icon: Icon(Icons.info), text: "Info Hub"),
+              Tab(icon: Icon(Icons.settings), text: "Other Services"),
             ],
           ),
         ),
