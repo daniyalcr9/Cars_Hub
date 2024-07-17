@@ -1,3 +1,4 @@
+import 'package:cars_hub/adpost.dart';
 import 'package:cars_hub/home_main.dart';
 import 'package:cars_hub/infohub.dart';
 import 'package:cars_hub/otherservices.dart';
@@ -43,6 +44,8 @@ class _HomeState extends State<Home> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             // Add functionality for the floating button
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => AdPosting()));
           },
           child: Icon(Icons.add),
           shape: RoundedRectangleBorder(
