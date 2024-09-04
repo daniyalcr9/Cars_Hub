@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "488200646078",
+    "project_id": "cars-hub-1382c",
+    "storage_bucket": "cars-hub-1382c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488200646078:android:dea005e0af677688f69def",
+        "android_client_info": {
+          "package_name": "com.example.cars_hub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsaJg0thGOg1R6HO-baN-b5dnZ-s_Ia_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
