@@ -25,7 +25,7 @@ class _MyWidgetState extends State<MyWidget> {
                 Color.fromARGB(255, 7, 6, 110),
                 Color.fromARGB(255, 32, 122, 182),
                 Color.fromARGB(255, 7, 6, 110),
-                Color.fromARGB(255, 32, 122, 182),
+                Color(0xFF207AB6),
               ], // Mixture of blue and green
             ),
           ),

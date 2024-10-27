@@ -3,6 +3,7 @@ import 'package:cars_hub/home.dart';
 import 'package:cars_hub/infohub.dart';
 import 'package:cars_hub/otherservices.dart';
 import 'package:cars_hub/signup.dart';
+import 'package:cars_hub/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         useMaterial3: true,
       ),
-      home: Home(),
+      home: Wrapper(),
     );
   }
 }
