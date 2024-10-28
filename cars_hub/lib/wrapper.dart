@@ -1,3 +1,4 @@
+import 'package:cars_hub/authenticate.dart';
 import 'package:cars_hub/home.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -11,6 +12,6 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
-    return Home();
+    return Authenticate();
   }
 }

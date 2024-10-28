@@ -1,3 +1,4 @@
+import 'package:cars_hub/auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -8,6 +9,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  AuthService _auth = AuthService();
+
   GlobalKey<FormState> form = GlobalKey<FormState>();
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -155,12 +158,19 @@ class _SignUpState extends State<SignUp> {
                       ),
                       SizedBox(height: 20.0),
                       ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (form.currentState!.validate()) {
                             print("name: " + name.text);
                             print("email: " + email.text);
                             print("password: " + pass.text);
                             print("confirm password : " + confirmpass.text);
+                            dynamic result = await _auth.signinAnon();
+                            if (result == null) {
+                              print("error signing in");
+                            } else {
+                              print("Signed In successfully");
+                              print(result);
+                            }
                           }
                         },
                         child: Text(
