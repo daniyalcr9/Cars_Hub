@@ -1,4 +1,5 @@
 import 'package:cars_hub/auth.dart';
+import 'package:cars_hub/home.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -168,6 +169,10 @@ class _SignUpState extends State<SignUp> {
                             if (result == null) {
                               print("error signing in");
                             } else {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Home()));
                               print("Signed In successfully");
                               print(result);
                             }

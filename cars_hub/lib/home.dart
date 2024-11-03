@@ -3,6 +3,8 @@ import 'package:cars_hub/home_main.dart';
 import 'package:cars_hub/infohub.dart';
 import 'package:cars_hub/otherservices.dart';
 import 'package:flutter/material.dart';
+import 'package:cars_hub/personicon.dart';
+import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -30,28 +32,90 @@ class _HomeState extends State<Home> {
           ),
           leading: Icon(Icons.menu),
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: Icon(Icons.person),
-            )
+            Builder(
+              builder: (context) => Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: IconButton(
+                  icon: Icon(Icons.person),
+                  onPressed: () => Scaffold.of(context)
+                      .openEndDrawer(), // Use Builder context here
+                ),
+              ),
+            ),
           ],
         ),
-        backgroundColor: Colors.transparent, // Setting transparent background
-        extendBodyBehindAppBar: true, // Extending background behind the app bar
+        endDrawer: Drawer(
+          // Right-side Drawer
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Username: John Doe',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      'Email: johndoe@example.com',
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text('Profile'),
+                onTap: () {
+                  Navigator.pop(context);
+                  // Navigate to Profile or other actions
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Settings'),
+                onTap: () {
+                  Navigator.pop(context);
+                  // Navigate to Settings or other actions
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout),
+                title: Text('Logout'),
+                onTap: () {
+                  Navigator.pop(context);
+                  // Log out the user or other actions
+                },
+              ),
+            ],
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
         body: TabBarView(
           children: [MyWidget(), infohub(), otherservices()],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // Add functionality for the floating button
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => AdPosting()));
           },
           child: Icon(Icons.add),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0), // Make it circular
+            borderRadius: BorderRadius.circular(30.0),
           ),
-          // backgroundColor: Theme.of(context).accentColor, // Using accent color for the floating action button
         ),
         bottomNavigationBar: Container(
           color: Colors.white,
@@ -63,23 +127,6 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-        //BottomNavigationBar(
-        //   items: [
-        //     BottomNavigationBarItem(
-        //       Container,
-        //       icon: Icon(Icons.home),
-        //       label: 'Home',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.info),
-        //       label: 'Info Hub',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.settings),
-        //       label: 'Other Services',
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
