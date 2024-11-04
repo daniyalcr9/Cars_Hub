@@ -4,7 +4,6 @@ import 'package:cars_hub/infohub.dart';
 import 'package:cars_hub/otherservices.dart';
 import 'package:flutter/material.dart';
 import 'package:cars_hub/personicon.dart';
-import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -37,71 +36,13 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.only(right: 8),
                 child: IconButton(
                   icon: Icon(Icons.person),
-                  onPressed: () => Scaffold.of(context)
-                      .openEndDrawer(), // Use Builder context here
+                  onPressed: () => Scaffold.of(context).openEndDrawer(),
                 ),
               ),
             ),
           ],
         ),
-        endDrawer: Drawer(
-          // Right-side Drawer
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Username: John Doe',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      'Email: johndoe@example.com',
-                      style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text('Profile'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Navigate to Profile or other actions
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Settings'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Navigate to Settings or other actions
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.logout),
-                title: Text('Logout'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Log out the user or other actions
-                },
-              ),
-            ],
-          ),
-        ),
+        endDrawer: DrawerContent(), // Use DrawerContent as the end drawer
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         body: TabBarView(
