@@ -1,3 +1,4 @@
+import 'package:cars_hub/auth.dart';
 import 'package:cars_hub/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ class DrawerContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final customUser = Provider.of<CustomUser?>(context);
+    final AuthService _auth = AuthService();
 
     return Drawer(
       child: Padding(
@@ -43,8 +45,9 @@ class DrawerContent extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.logout),
               title: Text("Logout"),
-              onTap: () {
+              onTap: () async {
                 // Log out functionality
+                await _auth.signout();
               },
             ),
           ],
