@@ -1,11 +1,14 @@
 import 'package:cars_hub/carimage.dart';
 import 'package:cars_hub/contactinfo.dart';
-import 'package:cars_hub/home.dart';
 import 'package:flutter/material.dart';
 import 'package:cars_hub/carinfo.dart';
+import 'package:cars_hub/home.dart';
 
 class AdPosting extends StatefulWidget {
-  const AdPosting({super.key});
+  final String emailuser; // Add emailuser parameter to receive the email
+
+  const AdPosting(
+      {super.key, required this.emailuser}); // Constructor to accept emailuser
 
   @override
   State<AdPosting> createState() => _AdPostingState();
@@ -13,12 +16,10 @@ class AdPosting extends StatefulWidget {
 
 class _AdPostingState extends State<AdPosting> {
   GlobalKey<FormState> form = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Post Your Ad'),
-      // ),
       body: SingleChildScrollView(
         child: Form(
           key: form,
@@ -37,14 +38,12 @@ class _AdPostingState extends State<AdPosting> {
                 ], // Mixture of blue and green
               ),
             ),
-            child: SingleChildScrollView(
+            child: Padding(
               padding: EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(
-                    height: 30,
-                  ),
+                  SizedBox(height: 30),
                   Text(
                     'Post Your Ad Today',
                     style: TextStyle(
@@ -61,10 +60,9 @@ class _AdPostingState extends State<AdPosting> {
                       color: Color.fromARGB(255, 165, 193, 212),
                     ),
                   ),
-
                   SizedBox(height: 10.0),
 
-                  //Car Information uploaded by user
+                  // Car Information uploaded by user
                   CarInfo(),
 
                   SizedBox(height: 20.0),
@@ -77,10 +75,9 @@ class _AdPostingState extends State<AdPosting> {
                       color: Color.fromARGB(255, 165, 193, 212),
                     ),
                   ),
-
                   SizedBox(height: 10.0),
 
-                  //Car iamges uploaded by user to sell
+                  // Car images uploaded by user to sell
                   CarImageUpload(),
 
                   SizedBox(height: 20.0),
@@ -93,7 +90,6 @@ class _AdPostingState extends State<AdPosting> {
                       color: Color.fromARGB(255, 165, 193, 212),
                     ),
                   ),
-
                   SizedBox(height: 10.0),
 
                   // Contact info added by user
@@ -104,10 +100,11 @@ class _AdPostingState extends State<AdPosting> {
                     onPressed: () {
                       // Handle ad submission
                       if (form.currentState!.validate()) {
-                        // print("name: $name");
-                        // print("email: $email");
-                        // print("password: $pass");
-                        // print("confirm password $confirmpass");
+                        // Here, handle the form data submission
+                        // For example, you might want to save the ad details
+                        // You can access the email like this:
+                        String emailuser = widget.emailuser;
+                        // Now you have access to the emailuser and other form data
                       }
                     },
                     child: Text('Post Ad'),
@@ -122,13 +119,19 @@ class _AdPostingState extends State<AdPosting> {
         onPressed: () {
           // Add functionality for the floating button
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Home()));
+            context,
+            MaterialPageRoute(
+              builder: (context) => Home(
+                emailuser: widget.emailuser,
+                username: "",
+              ), // Pass emailuser back to Home
+            ),
+          );
         },
         child: Icon(Icons.arrow_back),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0), // Make it circular
         ),
-        // backgroundColor: Theme.of(context).accentColor, // Using accent color for the floating action button
       ),
     );
   }

@@ -6,7 +6,12 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   CustomUser? _userFromFirebaseUser(User? user) {
-    return user != null ? CustomUser(uid: user.uid) : null;
+    return user != null
+        ? CustomUser(
+            uid: user.uid,
+            email: user.email,
+            username: user.displayName ?? 'Unknown')
+        : null;
   }
 
   Stream<CustomUser?> get user {
@@ -22,6 +27,31 @@ class AuthService {
       CustomUser? customUser = _userFromFirebaseUser(user);
       print(customUser?.uid); // Print only the uid
       return customUser?.uid;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future registerWithEmailandPassword(
+      String email, String password, String username) async {
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      User? user = result.user;
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future signInWithEmailandPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      User? user = result.user;
+      return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
       return null;

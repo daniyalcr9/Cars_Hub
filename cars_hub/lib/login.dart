@@ -4,7 +4,8 @@ import 'package:cars_hub/signup.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  final Function toggleview;
+  Login({required this.toggleview});
 
   @override
   State<Login> createState() => _LoginState();
@@ -14,13 +15,13 @@ class _LoginState extends State<Login> {
   AuthService _auth = AuthService();
 
   GlobalKey<FormState> form = GlobalKey<FormState>();
-  TextEditingController name = TextEditingController();
+
   TextEditingController email = TextEditingController();
   TextEditingController pass = TextEditingController();
-  TextEditingController confirmpass = TextEditingController();
 
   String emailuser = "";
   String passworduser = "";
+  String error = "";
 
   RegExp emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
 
@@ -143,28 +144,45 @@ class _LoginState extends State<Login> {
                       ElevatedButton(
                         onPressed: () async {
                           if (form.currentState!.validate()) {
-                            print("name: " + name.text);
-                            print("email: " + email.text);
-                            print("password: " + pass.text);
-                            print("confirm password : " + confirmpass.text);
-                            dynamic result = await _auth.signinAnon();
+                            emailuser = email.text.trim();
+                            passworduser = pass.text;
+
+                            dynamic result =
+                                await _auth.signInWithEmailandPassword(
+                                    emailuser, passworduser);
                             if (result == null) {
                               print("error signing in");
+                              setState(() {
+                                error = "Incorrect Email or Password";
+                              });
                             } else {
+                              String username = result.username;
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Home()));
+                                      builder: (context) => Home(
+                                            emailuser: emailuser,
+                                            username: username,
+                                          )));
                               print("Signed In successfully");
                               print(result);
                             }
                           }
                         },
                         child: Text(
-                          'Sign Up',
+                          'Log In',
                           style: TextStyle(
                             color: Color.fromARGB(255, 32, 122, 182),
                           ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Center(
+                        child: Text(
+                          error,
+                          style: TextStyle(fontSize: 12, color: Colors.red),
                         ),
                       ),
                       SizedBox(height: 20.0),
@@ -191,10 +209,7 @@ class _LoginState extends State<Login> {
                                 padding: EdgeInsets.symmetric(vertical: 16),
                               ),
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SignUp()));
+                                widget.toggleview();
                               },
                               icon: Icon(
                                 Icons.login,

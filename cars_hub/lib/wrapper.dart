@@ -15,13 +15,16 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
+    // Getting the current user from the provider
     final user = Provider.of<CustomUser?>(context);
-    print(user);
 
+    // If user is null, navigate to the Authenticate screen (Login/Signup)
     if (user == null) {
       return Authenticate();
     } else {
-      return Home();
+      // Ensure you access the username properly from the 'user' object
+      return Home(
+          emailuser: user.email ?? '', username: user.username ?? 'Guest');
     }
   }
 }

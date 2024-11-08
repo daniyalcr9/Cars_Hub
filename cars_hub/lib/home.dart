@@ -6,7 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:cars_hub/personicon.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  final String emailuser;
+  final String username;
+
+  const Home({Key? key, required this.emailuser, required this.username})
+      : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -15,6 +19,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    print('Received username: ${widget.username}');
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -42,16 +47,31 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-        endDrawer: DrawerContent(), // Use DrawerContent as the end drawer
+        // Correctly passing both emailuser and username to the DrawerContent
+        endDrawer: DrawerContent(
+          emailuser: widget.emailuser,
+          username: widget.username, // Pass the username here
+        ),
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         body: TabBarView(
-          children: [MyWidget(), infohub(), otherservices()],
+          children: [
+            MyWidget(),
+            infohub(),
+            otherservices(),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            // Pass widget.emailuser to AdPosting when navigating
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AdPosting()));
+              context,
+              MaterialPageRoute(
+                builder: (context) => AdPosting(
+                  emailuser: widget.emailuser, // Pass emailuser to AdPosting
+                ),
+              ),
+            );
           },
           child: Icon(Icons.add),
           shape: RoundedRectangleBorder(

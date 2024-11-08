@@ -4,7 +4,8 @@ import 'package:cars_hub/login.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+  final Function toggleview;
+  SignUp({required this.toggleview});
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -21,6 +22,7 @@ class _SignUpState extends State<SignUp> {
 
   String emailuser = "";
   String passworduser = "";
+  String error = "";
 
   RegExp emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
   var regpassword =
@@ -178,14 +180,22 @@ class _SignUpState extends State<SignUp> {
                               print("email: " + email.text);
                               print("password: " + pass.text);
                               print("confirm password : " + confirmpass.text);
-                              dynamic result = await _auth.signinAnon();
+                              dynamic result =
+                                  await _auth.registerWithEmailandPassword(
+                                      emailuser, passworduser, name.text);
                               if (result == null) {
                                 print("error signing in");
+                                setState(() {
+                                  error = "Please Enter a Valid email";
+                                });
                               } else {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Home()));
+                                        builder: (context) => Home(
+                                              emailuser: emailuser,
+                                              username: name.text,
+                                            )));
                                 print("Signed In successfully");
                                 print(result);
                               }
@@ -254,10 +264,7 @@ class _SignUpState extends State<SignUp> {
                                   padding: EdgeInsets.symmetric(vertical: 16),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Login()));
+                                  widget.toggleview();
                                 },
                                 icon: Icon(
                                   Icons.login,
@@ -266,7 +273,7 @@ class _SignUpState extends State<SignUp> {
                                 label: Text(
                                   'Login to Cars Hub',
                                   style: TextStyle(
-                                    color: Color.fromARGB(255, 32, 122, 182),
+                                    color: Color.fromARGB(255, 79, 139, 179),
                                   ),
                                 ),
                               ),
