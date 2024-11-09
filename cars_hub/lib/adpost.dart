@@ -7,8 +7,10 @@ import 'package:cars_hub/home.dart';
 class AdPosting extends StatefulWidget {
   final String emailuser; // Add emailuser parameter to receive the email
 
-  const AdPosting(
-      {super.key, required this.emailuser}); // Constructor to accept emailuser
+  const AdPosting({
+    super.key,
+    required this.emailuser,
+  }); // Constructor to accept emailuser
 
   @override
   State<AdPosting> createState() => _AdPostingState();
@@ -123,7 +125,6 @@ class _AdPostingState extends State<AdPosting> {
             MaterialPageRoute(
               builder: (context) => Home(
                 emailuser: widget.emailuser,
-                username: "",
               ), // Pass emailuser back to Home
             ),
           );

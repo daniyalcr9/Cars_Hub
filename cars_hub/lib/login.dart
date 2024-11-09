@@ -1,6 +1,5 @@
 import 'package:cars_hub/auth.dart';
 import 'package:cars_hub/home.dart';
-import 'package:cars_hub/signup.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -27,21 +26,10 @@ class _LoginState extends State<Login> {
 
   var regpassword =
       RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%&\*])(?=.{8,})');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Color.fromARGB(255, 87, 184, 248),
-      //   title: Text(
-      //     'Sign Up',
-      //     style: TextStyle(
-      //       color: Color.fromARGB(255, 7, 6, 110),
-      //       fontWeight: FontWeight.bold,
-      //       fontSize: 28,
-      //     ),
-      //   ),
-      //   centerTitle: true,
-      // ),
       body: SingleChildScrollView(
         child: Form(
           key: form,
@@ -57,7 +45,7 @@ class _LoginState extends State<Login> {
                   Color.fromARGB(255, 32, 122, 182),
                   Color.fromARGB(255, 7, 6, 110),
                   Color.fromARGB(255, 32, 122, 182),
-                ], // Mixture of blue and green
+                ],
               ),
             ),
             child: Column(
@@ -147,25 +135,28 @@ class _LoginState extends State<Login> {
                             emailuser = email.text.trim();
                             passworduser = pass.text;
 
+                            // Sign in and retrieve user info
                             dynamic result =
                                 await _auth.signInWithEmailandPassword(
                                     emailuser, passworduser);
                             if (result == null) {
-                              print("error signing in");
                               setState(() {
                                 error = "Incorrect Email or Password";
                               });
                             } else {
-                              String username = result.username;
+                              // Assuming result has a username field
+                              String username = result.username ??
+                                  "No Name"; // Provide fallback for null username
+
+                              // Pass username to Home screen
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Home(
-                                            emailuser: emailuser,
-                                            username: username,
-                                          )));
-                              print("Signed In successfully");
-                              print(result);
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Home(
+                                    emailuser: emailuser,
+                                  ),
+                                ),
+                              );
                             }
                           }
                         },
@@ -209,7 +200,7 @@ class _LoginState extends State<Login> {
                                 padding: EdgeInsets.symmetric(vertical: 16),
                               ),
                               onPressed: () {
-                                widget.toggleview();
+                                widget.toggleview(); // Switch to Sign Up view
                               },
                               icon: Icon(
                                 Icons.login,

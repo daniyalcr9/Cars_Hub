@@ -24,7 +24,8 @@ class _WrapperState extends State<Wrapper> {
     } else {
       // Ensure you access the username properly from the 'user' object
       return Home(
-          emailuser: user.email ?? '', username: user.username ?? 'Guest');
+        emailuser: user.email ?? '',
+      );
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:cars_hub/auth.dart';
+import 'package:cars_hub/authenticate.dart';
 import 'package:cars_hub/login.dart';
 import 'package:cars_hub/user.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,12 +8,10 @@ import 'package:provider/provider.dart';
 
 class DrawerContent extends StatefulWidget {
   final String emailuser;
-  final String username;
 
   const DrawerContent({
     Key? key,
     required this.emailuser,
-    required this.username,
   }) : super(key: key);
 
   @override
@@ -32,7 +31,7 @@ class _DrawerContentState extends State<DrawerContent> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Hello, ${widget.username}!",
+              "Hello, nigga",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -43,8 +42,7 @@ class _DrawerContentState extends State<DrawerContent> {
             ListTile(
               leading: Icon(Icons.person),
               title: Text("Username"),
-              subtitle:
-                  Text(widget.username), // Displayed as passed from SignUp
+              subtitle: Text("nigga"), // Displayed as passed from SignUp
             ),
             ListTile(
               leading: Icon(Icons.email),
@@ -63,9 +61,9 @@ class _DrawerContentState extends State<DrawerContent> {
               title: Text("Logout"),
               onTap: () async {
                 await _auth.signout();
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (context) => Login(toggleview: () {})),
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => Authenticate()),
+                  (Route<dynamic> route) => false, // Clears all routes
                 );
               },
             ),

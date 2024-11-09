@@ -194,7 +194,6 @@ class _SignUpState extends State<SignUp> {
                                     MaterialPageRoute(
                                         builder: (context) => Home(
                                               emailuser: emailuser,
-                                              username: name.text,
                                             )));
                                 print("Signed In successfully");
                                 print(result);

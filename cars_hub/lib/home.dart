@@ -7,10 +7,8 @@ import 'package:cars_hub/personicon.dart';
 
 class Home extends StatefulWidget {
   final String emailuser;
-  final String username;
 
-  const Home({Key? key, required this.emailuser, required this.username})
-      : super(key: key);
+  const Home({Key? key, required this.emailuser}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -19,7 +17,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    print('Received username: ${widget.username}');
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -50,7 +47,6 @@ class _HomeState extends State<Home> {
         // Correctly passing both emailuser and username to the DrawerContent
         endDrawer: DrawerContent(
           emailuser: widget.emailuser,
-          username: widget.username, // Pass the username here
         ),
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
@@ -68,7 +64,7 @@ class _HomeState extends State<Home> {
               context,
               MaterialPageRoute(
                 builder: (context) => AdPosting(
-                  emailuser: widget.emailuser, // Pass emailuser to AdPosting
+                  emailuser: widget.emailuser,
                 ),
               ),
             );
