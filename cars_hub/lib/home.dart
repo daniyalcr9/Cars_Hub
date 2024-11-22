@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
             MyWidget(
               ads: [],
             ),
-            infohub(),
+            InfoHub(),
             otherservices(),
           ],
         ),
