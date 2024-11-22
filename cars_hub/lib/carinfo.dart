@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CarInfo extends StatefulWidget {
-  const CarInfo({super.key});
-
-  @override
-  State<CarInfo> createState() => _CarInfoState();
-}
-
-class _CarInfoState extends State<CarInfo> {
   TextEditingController city = TextEditingController();
   TextEditingController make = TextEditingController();
   TextEditingController model = TextEditingController();
@@ -16,13 +9,30 @@ class _CarInfoState extends State<CarInfo> {
   TextEditingController color = TextEditingController();
   TextEditingController mileage = TextEditingController();
   TextEditingController price = TextEditingController();
+  CarInfo({
+    Key? key,
+    required this.city,
+    required this.make,
+    required this.model,
+    required this.variant,
+    required this.registered_in,
+    required this.color,
+    required this.mileage,
+    required this.price,
+  }) : super(key: key);
+
+  @override
+  State<CarInfo> createState() => _CarInfoState();
+}
+
+class _CarInfoState extends State<CarInfo> {
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         TextFormField(
-          controller: city,
+          controller: widget.city,
           validator: (value) {
             if (value!.isEmpty) {
               return "Please Enter your City";
@@ -42,7 +52,7 @@ class _CarInfoState extends State<CarInfo> {
           height: 10,
         ),
         TextFormField(
-          controller: make,
+          controller: widget.make,
           validator: (value) {
             if (value!.isEmpty) {
               return "Please Enter your Car Make/Company";
@@ -63,7 +73,7 @@ class _CarInfoState extends State<CarInfo> {
         ),
         TextFormField(
           keyboardType: TextInputType.number,
-          controller: model,
+          controller: widget.model,
           validator: (value) {
             if (value!.isEmpty) {
               return "Please Enter your Car Model";
@@ -83,7 +93,7 @@ class _CarInfoState extends State<CarInfo> {
           height: 10,
         ),
         TextFormField(
-          controller: variant,
+          controller: widget.variant,
           validator: (value) {
             if (value!.isEmpty) {
               return "Please Enter your Car Variant";
@@ -104,7 +114,7 @@ class _CarInfoState extends State<CarInfo> {
         ),
         TextFormField(
           keyboardType: TextInputType.number,
-          controller: registered_in,
+          controller: widget.registered_in,
           validator: (value) {
             if (value!.isEmpty) {
               return "Please Enter your Car Registered Year";
@@ -124,7 +134,7 @@ class _CarInfoState extends State<CarInfo> {
           height: 10,
         ),
         TextFormField(
-          controller: color,
+          controller: widget.color,
           validator: (value) {
             if (value!.isEmpty) {
               return "Please Enter your Car's Exterior Color";
@@ -144,7 +154,7 @@ class _CarInfoState extends State<CarInfo> {
           height: 10,
         ),
         TextFormField(
-          controller: mileage,
+          controller: widget.mileage,
           keyboardType: TextInputType.number,
           validator: (value) {
             if (value!.isEmpty) {
@@ -165,7 +175,7 @@ class _CarInfoState extends State<CarInfo> {
           height: 10,
         ),
         TextFormField(
-          controller: price,
+          controller: widget.price,
           keyboardType: TextInputType.number,
           validator: (value) {
             if (value!.isEmpty) {

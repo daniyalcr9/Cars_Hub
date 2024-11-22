@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+  final List<Map<String, String>> ads; // Define the 'ads' parameter
+
+  const MyWidget({Key? key, required this.ads}) : super(key: key);
 
   @override
   State<MyWidget> createState() => _MyWidgetState();
@@ -30,7 +32,7 @@ class _MyWidgetState extends State<MyWidget> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 8),
+            padding: const EdgeInsets.symmetric(vertical: 110, horizontal: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

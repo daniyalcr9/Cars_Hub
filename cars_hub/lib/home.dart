@@ -4,6 +4,7 @@ import 'package:cars_hub/infohub.dart';
 import 'package:cars_hub/otherservices.dart';
 import 'package:flutter/material.dart';
 import 'package:cars_hub/personicon.dart';
+import 'package:cars_hub/home.dart';
 
 class Home extends StatefulWidget {
   final String emailuser;
@@ -52,7 +53,9 @@ class _HomeState extends State<Home> {
         extendBodyBehindAppBar: true,
         body: TabBarView(
           children: [
-            MyWidget(),
+            MyWidget(
+              ads: [],
+            ),
             infohub(),
             otherservices(),
           ],

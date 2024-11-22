@@ -26,12 +26,12 @@ class _DrawerContentState extends State<DrawerContent> {
 
     return Drawer(
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.fromLTRB(20, 80, 20, 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Hello, nigga",
+              "Welcome!",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -39,11 +39,6 @@ class _DrawerContentState extends State<DrawerContent> {
             ),
             SizedBox(height: 10),
             Divider(),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Username"),
-              subtitle: Text("nigga"), // Displayed as passed from SignUp
-            ),
             ListTile(
               leading: Icon(Icons.email),
               title: Text("Email"),

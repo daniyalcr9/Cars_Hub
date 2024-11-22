@@ -51,7 +51,7 @@ class _LoginState extends State<Login> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(15, 70, 8, 0),
+                  padding: const EdgeInsets.fromLTRB(15, 130, 8, 0),
                   child: Text(
                     "Login to ",
                     style: TextStyle(

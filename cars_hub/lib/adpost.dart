@@ -3,6 +3,7 @@ import 'package:cars_hub/contactinfo.dart';
 import 'package:flutter/material.dart';
 import 'package:cars_hub/carinfo.dart';
 import 'package:cars_hub/home.dart';
+import 'dart:io';
 
 class AdPosting extends StatefulWidget {
   final String emailuser; // Add emailuser parameter to receive the email
@@ -18,6 +19,22 @@ class AdPosting extends StatefulWidget {
 
 class _AdPostingState extends State<AdPosting> {
   GlobalKey<FormState> form = GlobalKey<FormState>();
+  // Controllers for CarInfo
+  final TextEditingController city = TextEditingController();
+  final TextEditingController make = TextEditingController();
+  final TextEditingController model = TextEditingController();
+  final TextEditingController variant = TextEditingController();
+  final TextEditingController registered_in = TextEditingController();
+  final TextEditingController color = TextEditingController();
+  final TextEditingController mileage = TextEditingController();
+  final TextEditingController price = TextEditingController();
+
+  // Controllers for ContactInfo
+  final TextEditingController number = TextEditingController();
+  final TextEditingController email = TextEditingController();
+
+  // Placeholder for selected image
+  String? selectedImagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +43,6 @@ class _AdPostingState extends State<AdPosting> {
         child: Form(
           key: form,
           child: Container(
-            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -65,7 +81,16 @@ class _AdPostingState extends State<AdPosting> {
                   SizedBox(height: 10.0),
 
                   // Car Information uploaded by user
-                  CarInfo(),
+                  CarInfo(
+                    city: city,
+                    make: make,
+                    model: model,
+                    variant: variant,
+                    registered_in: registered_in,
+                    color: color,
+                    mileage: mileage,
+                    price: price,
+                  ),
 
                   SizedBox(height: 20.0),
 
@@ -80,7 +105,13 @@ class _AdPostingState extends State<AdPosting> {
                   SizedBox(height: 10.0),
 
                   // Car images uploaded by user to sell
-                  CarImageUpload(),
+                  CarImageUpload(
+                    onImageSelected: (File? image) {
+                      setState(() {
+                        selectedImagePath = image?.path; // Save the image path
+                      });
+                    },
+                  ),
 
                   SizedBox(height: 20.0),
 
@@ -95,16 +126,26 @@ class _AdPostingState extends State<AdPosting> {
                   SizedBox(height: 10.0),
 
                   // Contact info added by user
-                  ContactInfo(),
+                  ContactInfo(number: number, email: email),
 
                   SizedBox(height: 20.0),
                   ElevatedButton(
                     onPressed: () {
                       // Handle ad submission
                       if (form.currentState!.validate()) {
-                        // Here, handle the form data submission
-                        // For example, you might want to save the ad details
-                        // You can access the email like this:
+                        Map<String, String?> adData = {
+                          "city": city.text,
+                          "make": make.text,
+                          "model": model.text,
+                          "variant": variant.text,
+                          "registered_in": registered_in.text,
+                          "color": color.text,
+                          "mileage": mileage.text,
+                          "price": price.text,
+                          "number": number.text,
+                          "email": email.text,
+                        };
+                        print("Ad Data: $adData");
                         String emailuser = widget.emailuser;
                         // Now you have access to the emailuser and other form data
                       }
@@ -119,6 +160,16 @@ class _AdPostingState extends State<AdPosting> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          Map<String, String> adData = {
+            "city": city.text,
+            "make": make.text,
+            "model": model.text,
+            "variant": variant.text,
+            "registered_in": registered_in.text,
+            "color": color.text,
+            "mileage": mileage.text,
+            "price": price.text,
+          };
           // Add functionality for the floating button
           Navigator.push(
             context,

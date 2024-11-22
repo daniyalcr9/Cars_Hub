@@ -47,7 +47,7 @@ class _infohubState extends State<infohub> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 8),
+            padding: const EdgeInsets.symmetric(vertical: 110, horizontal: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

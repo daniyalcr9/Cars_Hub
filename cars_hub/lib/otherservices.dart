@@ -75,7 +75,7 @@ class _otherservicesState extends State<otherservices> {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 64, 16, 16),
+              padding: const EdgeInsets.fromLTRB(16, 110, 16, 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
